@@ -16,11 +16,22 @@ public class PanaceaBackendApplication {
 	public static void main(String[] args) {
 		
 		//0. Creación de un objeto con new
+		//SpringApplication.run(PanaceaBackendApplication.class, args);
+		//Recurso recurso = new Recurso("nas", "RING 1", "FUTER", "MING", "RING 1", "Cid Campeador",
+        //"Castilla y León", "Burgos", "Burgos", "20000",
+        //"Serv. San 1", "Sin_observaciones");
+		//System.out.println(recurso);
+		
+		
+		
+		//----------------------------- OPCION 1 - XML -----------------------------------------//   (primero crear applicationContext.xml en resources)
+
 		SpringApplication.run(PanaceaBackendApplication.class, args);
-		Recurso recurso = new Recurso("nas", "RING 1", "FUTER", "MING", "RING 1", "Cid Campeador",
-        "Castilla y León", "Burgos", "Burgos", "20000",
-        "Serv. San 1", "Sin_observaciones");
+		ClassPathXmlApplicationContext contexto= new ClassPathXmlApplicationContext("applicationContext.xml");
+		Recurso recurso = contexto.getBean("recurso", Recurso.class);
 		System.out.println(recurso);
+		Activacion activacion = contexto.getBean("activacion", Activacion.class);
+		System.out.println(activacion);
 		
 	}
 }
