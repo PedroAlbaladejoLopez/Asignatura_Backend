@@ -4,15 +4,22 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Recurso {
 	
+	private static final Logger log =
+            LoggerFactory.getLogger(Recurso.class);
+	
 	private String id;
+	
 	@Value("${nas.valor:XXX}")
 	private String nas; // Excel = ARG NAS
+	
 	private String UCO; // Excel = UCO
 	private String M1N; // Excel = M1N
 	private String M2N; // Excel = M2N
@@ -24,11 +31,17 @@ public class Recurso {
 	private String codigoPostal; // Excel = COD. POSTAL
 	private String servicioMedicoReferencia; // Excel = SRV. MED. REF
 	
-	  
-	
 	public Recurso() {
 		super();
-		this.UCO = "BRILEG";
+		//--------------solo para ejemplo de logs--------------//
+		try {
+			this.UCO = "BRILEG";
+			int numero = Integer.parseInt(UCO);  //Error intencionado
+			log.info("Setteado UCO en Recurso");
+		} catch (Exception e) {
+			log.error("Error seteando UCO en Recurso: ", e);
+		}
+		//----------------------------------------------------//
 	}
 	
 	public Recurso(String M1N) {
