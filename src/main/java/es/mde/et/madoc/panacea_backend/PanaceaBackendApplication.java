@@ -26,12 +26,22 @@ public class PanaceaBackendApplication {
 		
 		//----------------------------- OPCION 1 - XML -----------------------------------------//   (primero crear applicationContext.xml en resources)
 
-		SpringApplication.run(PanaceaBackendApplication.class, args);
-		ClassPathXmlApplicationContext contexto= new ClassPathXmlApplicationContext("applicationContext.xml");
-		Recurso recurso = contexto.getBean("recurso", Recurso.class);
+		//SpringApplication.run(PanaceaBackendApplication.class, args);
+		//ClassPathXmlApplicationContext contexto= new ClassPathXmlApplicationContext("applicationContext.xml");
+		//Recurso recurso = contexto.getBean("recurso", Recurso.class);
+		//System.out.println(recurso);
+		//Activacion activacion = contexto.getBean("activacion", Activacion.class);
+		//System.out.println(activacion);
+		
+		
+		//----------------------------OPCION 2 - JAVA CONFIG----------------------------------//     (primero crear AppConfig)
+		
+		AnnotationConfigApplicationContext contexto = new AnnotationConfigApplicationContext(AppConfig.class);
+		Recurso recurso = contexto.getBean(Recurso.class);
 		System.out.println(recurso);
-		Activacion activacion = contexto.getBean("activacion", Activacion.class);
-		System.out.println(activacion);
+		        
+		   
+		
 		
 	}
 }
