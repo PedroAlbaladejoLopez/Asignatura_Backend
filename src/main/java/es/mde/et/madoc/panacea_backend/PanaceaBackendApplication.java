@@ -36,12 +36,21 @@ public class PanaceaBackendApplication {
 		
 		//----------------------------OPCION 2 - JAVA CONFIG----------------------------------//     (primero crear AppConfig)
 		
-		AnnotationConfigApplicationContext contexto = new AnnotationConfigApplicationContext(AppConfig.class);
-		Recurso recurso = contexto.getBean(Recurso.class);
-		System.out.println(recurso);
+		//AnnotationConfigApplicationContext contexto = new AnnotationConfigApplicationContext(AppConfig.class);
+		//Recurso recurso = contexto.getBean(Recurso.class);
+		//System.out.println(recurso);
 		        
 		   
-		
+		//----------------------------OPCION 3 - ANNOTATION CONFIG -----------------------------//
+
+		ApplicationContext contexto = SpringApplication.run(PanaceaBackendApplication.class, args);
+
+		Recurso recurso = contexto.getBean(Recurso.class);
+		System.out.println(recurso);
+
+		Activacion activacion = contexto.getBean(Activacion.class);
+		System.out.println(activacion);
+
 		
 	}
 }

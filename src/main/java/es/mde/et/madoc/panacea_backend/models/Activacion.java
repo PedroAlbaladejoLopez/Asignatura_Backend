@@ -11,12 +11,14 @@ import org.springframework.stereotype.Component;
 import es.mde.et.madoc.panacea_backend.models.enums.TipoJornada;
 import es.mde.et.madoc.panacea_backend.models.enums.TipoSituacion;
 
+@Component
 public class Activacion {
 	
   public Activacion() {
 		super();
 	}
   
+  @Autowired
   public Activacion(Set<Recurso> recursos) {
 		this.recursos = recursos;
 	}
