@@ -4,12 +4,14 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Recurso {
 	
 	private String id;
+	@Value("${nas.valor:XXX}")
 	private String nas; // Excel = ARG NAS
 	private String UCO; // Excel = UCO
 	private String M1N; // Excel = M1N
