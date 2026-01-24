@@ -18,7 +18,7 @@ public class Activacion {
 		super();
 	}
   
-  @Autowired
+  @Autowired  //OPCION 1 - Inyección por constructor.
   public Activacion(Set<Recurso> recursos) {
 		this.recursos = recursos;
 	}
@@ -35,8 +35,9 @@ public Activacion(String id, Set<Recurso> recursos, LocalDateTime fechaHoraInici
 		this.altaActivacion = altaActivacion;
 		this.observaciones = observaciones;
 	}
-private String id;
-
+  private String id;
+  
+  //@Autowired    //OPCION 3 - Inyección por atributo.
   private Set<Recurso> recursos = new HashSet<>(); // Excel = TIPO DE RECURSO, NOMBRE RECURSO
 
   private LocalDateTime fechaHoraInicio; // Excel = FECHA INICIO, HORA INICIO
@@ -48,6 +49,8 @@ private String id;
 
   private LocalDate altaActivacion; // Excel = ALTA/MODIF.
   private String observaciones; // Excel = OBSERVACIONES
+  
+  
 	public String getId() {
 		return id;
 	}
@@ -57,6 +60,7 @@ private String id;
 	public Set<Recurso> getRecursos() {
 		return recursos;
 	}
+	//@Autowired   //OPCION 2 - Inyección por setter.
 	public void setRecursos(Set<Recurso> recursos) {
 		this.recursos = recursos;
 	}

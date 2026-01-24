@@ -36,7 +36,7 @@ public class Recurso {
 		//--------------solo para ejemplo de logs--------------//
 		try {
 			this.UCO = "BRILEG";
-			int numero = Integer.parseInt(UCO);  //Error intencionado
+			//int numero = Integer.parseInt(UCO);  //Error intencionado
 			log.info("Setteado UCO en Recurso");
 		} catch (Exception e) {
 			log.error("Error seteando UCO en Recurso: ", e);
