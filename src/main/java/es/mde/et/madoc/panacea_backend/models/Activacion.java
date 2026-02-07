@@ -1,29 +1,39 @@
 package es.mde.et.madoc.panacea_backend.models;
 
 import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import es.mde.et.madoc.panacea_backend.models.enums.TipoJornada;
 import es.mde.et.madoc.panacea_backend.models.enums.TipoSituacion;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
 
-@Component
+@Entity
 public class Activacion {
 	
-  public Activacion() {
+	public Activacion() {
 		super();
 	}
   
-  @Autowired  //OPCION 1 - Inyección por constructor.
-  public Activacion(Set<Recurso> recursos) {
+    //@Autowired  //OPCION 1 - Inyección por constructor.
+    public Activacion(Set<Recurso> recursos) {
 		this.recursos = recursos;
 	}
   
-public Activacion(String id, Set<Recurso> recursos, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin,
+    public Activacion(UUID id, Set<Recurso> recursos, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin,
 			TipoJornada tipoJornada, TipoSituacion tipoSituacion, LocalDate altaActivacion, String observaciones) {
 		super();
 		this.id = id;
@@ -35,28 +45,38 @@ public Activacion(String id, Set<Recurso> recursos, LocalDateTime fechaHoraInici
 		this.altaActivacion = altaActivacion;
 		this.observaciones = observaciones;
 	}
-  private String id;
+
+    @Id
+    @GeneratedValue
+    private UUID id;
   
-  //@Autowired    //OPCION 3 - Inyección por atributo.
-  private Set<Recurso> recursos = new HashSet<>(); // Excel = TIPO DE RECURSO, NOMBRE RECURSO
+    @ManyToMany
+    @JoinTable(
+        name = "activacion_recurso",
+        joinColumns = @JoinColumn(name = "activacion_id"),
+        inverseJoinColumns = @JoinColumn(name = "recurso_id"))
+    private Set<Recurso> recursos = new HashSet<>(); // Excel = TIPO DE RECURSO, NOMBRE RECURSO
 
-  private LocalDateTime fechaHoraInicio; // Excel = FECHA INICIO, HORA INICIO
-  private LocalDateTime fechaHoraFin; // Excel = FECHA FIN, HORA FIN
+    private LocalDateTime fechaHoraInicio; // Excel = FECHA INICIO, HORA INICIO
+    private LocalDateTime fechaHoraFin; // Excel = FECHA FIN, HORA FIN
 
-  private TipoJornada tipoJornada; // Excel = JORNADA
+    private TipoJornada tipoJornada; // Excel = JORNADA
 
-  private TipoSituacion tipoSituacion; // Excel = TIPO SITUACION
+    private TipoSituacion tipoSituacion; // Excel = TIPO SITUACION
 
-  private LocalDate altaActivacion; // Excel = ALTA/MODIF.
-  private String observaciones; // Excel = OBSERVACIONES
+    private LocalDate altaActivacion; // Excel = ALTA/MODIF.
+    private String observaciones; // Excel = OBSERVACIONES
   
   
-	public String getId() {
+	
+	public UUID getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+	public void setId(UUID id) {
 		this.id = id;
 	}
+
 	public Set<Recurso> getRecursos() {
 		return recursos;
 	}

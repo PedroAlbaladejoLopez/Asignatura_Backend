@@ -1,5 +1,6 @@
 package es.mde.et.madoc.panacea_backend;
 
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -9,9 +10,19 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ch.qos.logback.core.net.SyslogOutputStream;
 import es.mde.et.madoc.panacea_backend.models.Activacion;
 import es.mde.et.madoc.panacea_backend.models.Recurso;
+import es.mde.et.madoc.panacea_backend.models.RecursoMaterial;
+import es.mde.et.madoc.panacea_backend.rest.RecursoDAO;
+import es.mde.et.madoc.panacea_backend.service.RecursoService;
 
 @SpringBootApplication
 public class PanaceaBackendApplication {
+	
+	private static RecursoService recursoService;
+	
+	   // Constructor para inyección de RecursoService
+    public PanaceaBackendApplication(RecursoService recursoService) {
+        this.recursoService = recursoService;
+    }
 
 	public static void main(String[] args) {
 		
@@ -45,12 +56,27 @@ public class PanaceaBackendApplication {
 
 		ApplicationContext contexto = SpringApplication.run(PanaceaBackendApplication.class, args);
 
-		Recurso recurso = contexto.getBean(Recurso.class);
-		System.out.println(recurso);
+		//Recurso recurso = contexto.getBean(Recurso.class);
+		//System.out.println(recurso);
 
-		Activacion activacion = contexto.getBean(Activacion.class);
-		System.out.println(activacion);
-
+		//Activacion activacion = contexto.getBean(Activacion.class);
+		//System.out.println(activacion);
+		ejemploGuardadoBBDD();
 		
 	}
+	
+	public static void ejemploGuardadoBBDD() {
+		Recurso recurso = new Recurso("nas", "RING 1", "FUTER", "MING", "RING 1", "Cid Campeador",
+        "Castilla y León", "Burgos", "Burgos", "20000",
+        "Serv. San 1", "Sin_observaciones");
+		try {
+			recursoService.guardarRecurso(recurso);
+			System.out.println("Guardado recurso: " + recurso);
+		} catch (Exception e) {
+			System.out.println("Error guardando recurso: " + e);
+		}
+	}
+	
+	
+
 }

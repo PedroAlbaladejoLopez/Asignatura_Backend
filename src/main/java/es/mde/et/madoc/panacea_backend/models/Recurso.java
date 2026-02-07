@@ -1,21 +1,31 @@
 package es.mde.et.madoc.panacea_backend.models;
 
 import java.time.LocalDate;
+
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+
+@Entity
 public class Recurso {
 	
 	private static final Logger log =
             LoggerFactory.getLogger(Recurso.class);
-	
-	private String id;
+    @Id
+    @GeneratedValue
+    private UUID id;
 	
 	@Value("${nas.valor:XXX}")
 	private String nas; // Excel = ARG NAS
@@ -72,18 +82,23 @@ public class Recurso {
 	private LocalDate altaRecurso; // Excel = ALTA/MODIF.
 	private String observaciones; // Excel = OTROS DATOS RECURSO
 	
+	@ManyToMany (mappedBy = "recursos")
 	private Set<Activacion> activaciones = new HashSet<>();
 	
 	
-	public String getId() {
+	
+	public UUID getId() {
 		return id;
 	}
-	
-	
-	public void setId(String id) {
+
+	public void setId(UUID id) {
 		this.id = id;
 	}
-	
+
+	public static Logger getLog() {
+		return log;
+	}
+
 	public String getNas() {
 		return nas;
 	}
