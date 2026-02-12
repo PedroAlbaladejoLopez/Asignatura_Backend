@@ -1,10 +1,10 @@
-package es.mde.et.madoc.panacea_backend.service;
+package es.mde.et.madoc.panacea_backend.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import es.mde.et.madoc.panacea_backend.models.Recurso;
-import es.mde.et.madoc.panacea_backend.rest.RecursoDAO;
+import es.mde.et.madoc.panacea_backend.repositories.RecursoDAO;
 
 @Service
 public class RecursoService {

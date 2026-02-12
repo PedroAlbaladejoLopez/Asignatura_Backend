@@ -33,10 +33,9 @@ public class Activacion {
 		this.recursos = recursos;
 	}
   
-    public Activacion(UUID id, Set<Recurso> recursos, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin,
+    public Activacion(Set<Recurso> recursos, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin,
 			TipoJornada tipoJornada, TipoSituacion tipoSituacion, LocalDate altaActivacion, String observaciones) {
 		super();
-		this.id = id;
 		this.recursos = recursos;
 		this.fechaHoraInicio = fechaHoraInicio;
 		this.fechaHoraFin = fechaHoraFin;

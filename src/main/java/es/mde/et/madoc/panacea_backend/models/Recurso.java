@@ -40,6 +40,11 @@ public class Recurso {
 	private String localidad; // Excel = LOCALIDAD
 	private String codigoPostal; // Excel = COD. POSTAL
 	private String servicioMedicoReferencia; // Excel = SRV. MED. REF
+	private LocalDate altaRecurso; // Excel = ALTA/MODIF.
+	private String observaciones; // Excel = OTROS DATOS RECURSO
+	
+	@ManyToMany (mappedBy = "recursos")
+	private Set<Activacion> activaciones = new HashSet<>();
 	
 	public Recurso() {
 		super();
@@ -78,14 +83,6 @@ public class Recurso {
 	    this.altaRecurso = LocalDate.now();
 	    this.activaciones = new HashSet<Activacion>();
 	  }
-	
-	private LocalDate altaRecurso; // Excel = ALTA/MODIF.
-	private String observaciones; // Excel = OTROS DATOS RECURSO
-	
-	@ManyToMany (mappedBy = "recursos")
-	private Set<Activacion> activaciones = new HashSet<>();
-	
-	
 	
 	public UUID getId() {
 		return id;

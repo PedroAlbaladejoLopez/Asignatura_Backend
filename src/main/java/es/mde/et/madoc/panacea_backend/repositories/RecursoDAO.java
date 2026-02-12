@@ -1,10 +1,10 @@
-package es.mde.et.madoc.panacea_backend.rest;
+package es.mde.et.madoc.panacea_backend.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import es.mde.et.madoc.panacea_backend.models.Recurso;
-import es.mde.et.madoc.panacea_backend.service.RecursoService;
+import es.mde.et.madoc.panacea_backend.services.RecursoService;
 
 @Repository
 public interface RecursoDAO extends JpaRepository<Recurso, String>{
