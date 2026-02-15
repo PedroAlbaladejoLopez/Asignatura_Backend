@@ -11,14 +11,27 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 @Entity
+
+//1. SINGLE TABLE
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
+@DiscriminatorColumn(name = "tipo_recurso")
+
+//2. JOINED
+//@Inheritance(strategy = InheritanceType.JOINED)
+
+//3. TABLE PER CLASS
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Recurso {
 	
 	private static final Logger log =

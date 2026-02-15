@@ -121,8 +121,8 @@ public class PanaceaBackendApplication {
 		actividadService.guardarActividad(actividad);
 
 		// Prueba guardar otra actividad con la misma Activacion -- ERROR
-		//Actividad actividad2 = new Actividad("Nombre de actividad 2", activacion);
-		//actividadService.guardarActividad(actividad2);
+//		Actividad actividad2 = new Actividad("Nombre de actividad 2", activacion);
+//		actividadService.guardarActividad(actividad2);
 
 		// 2. ONETOMANY Creacion de una Actividad con varias Activaciones
 
