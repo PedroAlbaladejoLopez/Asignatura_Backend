@@ -15,6 +15,6 @@ import es.mde.et.madoc.panacea_backend.models.Recurso;
 path = "recursos", 
 collectionResourceRel = "recursos", 
 itemResourceRel ="recurso")
-public interface RecursoDAO extends JpaRepository<Recurso, UUID>{
+public interface RecursoDAO extends JpaRepository<Recurso, UUID>, RecursoDAOCustom{
 	
 }

@@ -151,6 +151,8 @@ public class PanaceaBackendApplication {
 //		Activacion activacion2 = new Activacion(recursos, LocalDateTime.now(), LocalDateTime.now(),
 //				TipoJornada.COMPLETA, TipoSituacion.COMISION_SERVICIO, LocalDate.now(), "Ejemplo observaciones");
 //		activacionService.guardarActivacion(activacion2);
+		
+		System.out.println(recursoService.obtenerRecursosPorBase("Cid Campeador"));
 	}
 
 }

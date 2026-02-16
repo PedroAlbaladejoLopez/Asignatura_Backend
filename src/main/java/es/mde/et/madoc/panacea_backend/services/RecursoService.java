@@ -1,5 +1,7 @@
 package es.mde.et.madoc.panacea_backend.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,5 +26,10 @@ public class RecursoService {
     @Transactional
     public Recurso guardarRecurso(Recurso recurso) {
         return recursoDAO.save(recurso);
+    }
+    
+    @Transactional
+    public List<Recurso> obtenerRecursosPorBase(String base){
+    	return recursoDAO.buscarPorBasePersonalizado(base);
     }
 }

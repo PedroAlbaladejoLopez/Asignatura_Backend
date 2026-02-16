@@ -67,13 +67,13 @@ public class Recurso {
 	public Recurso() {
 		super();
 		//--------------solo para ejemplo de logs--------------//
-		try {
-			this.UCO = "BRILEG";
-			//int numero = Integer.parseInt(UCO);  //Error intencionado
-			log.info("Setteado UCO en Recurso");
-		} catch (Exception e) {
-			log.error("Error seteando UCO en Recurso: ", e);
-		}
+//		try {
+//			this.UCO = "BRILEG";
+//			//int numero = Integer.parseInt(UCO);  //Error intencionado
+//			log.info("Setteado UCO en Recurso");
+//		} catch (Exception e) {
+//			log.error("Error seteando UCO en Recurso: ", e);
+//		}
 		//----------------------------------------------------//
 	}
 	
@@ -259,7 +259,7 @@ public class Recurso {
 				+ ", base=" + base + ", comunidadAutonoma=" + comunidadAutonoma + ", provincia=" + provincia
 				+ ", localidad=" + localidad + ", codigoPostal=" + codigoPostal + ", servicioMedicoReferencia="
 				+ servicioMedicoReferencia + ", altaRecurso=" + altaRecurso + ", observaciones=" + observaciones
-				+ ", activaciones=" + activaciones + "]";
+				 + "]";
 	}
 
 }
