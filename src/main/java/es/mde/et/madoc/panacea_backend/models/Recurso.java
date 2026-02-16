@@ -11,6 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -46,6 +50,7 @@ public class Recurso {
 	private String UCO; // Excel = UCO
 	private String M1N; // Excel = M1N
 	private String M2N; // Excel = M2N
+	//@JsonIgnore
 	private String M3N; // Excel = M3N
 	private String base; // Excel = BAE
 	private String comunidadAutonoma; // Excel = COMUNIDAD AUTONOMA
