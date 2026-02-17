@@ -24,9 +24,9 @@ public class RestConfig implements RepositoryRestConfigurer {
     	config.setBasePath("/api");
 
     	config.getExposureConfiguration()
-    	.forDomainType(Recurso.class)
-        .withItemExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.DELETE))
-        .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.POST));
+    	.forDomainType(Recurso.class);
+        //.withItemExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.DELETE))
+        //.withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.POST));
         
     	config.setDefaultPageSize(20);
     	config.setMaxPageSize(100);
