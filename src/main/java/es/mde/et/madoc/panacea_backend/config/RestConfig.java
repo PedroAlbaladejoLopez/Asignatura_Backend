@@ -14,13 +14,22 @@ public class RestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+    	
+    	config.exposeIdsFor(Recurso.class, RecursoHumano.class);
+    	
+    	cors.addMapping("/**")
+        .allowedOrigins("http://localhost:4200")
+        .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH");
 
-        //config.getExposureConfiguration().forDomainType(Recurso.class);
-            
-            //.withItemExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.DELETE))
-            
-            //.withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.POST));
+    	config.setBasePath("/api");
+
+    	config.getExposureConfiguration()
+    	.forDomainType(Recurso.class)
+        .withItemExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.DELETE))
+        .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.POST));
         
-       // config.exposeIdsFor(Recurso.class, RecursoHumano.class);
+    	config.setDefaultPageSize(20);
+    	config.setMaxPageSize(100);
+       
     }
 }
